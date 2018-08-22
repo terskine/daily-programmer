@@ -28,10 +28,5 @@ def createDict():
 
 
 if __name__== "__main__":
-        
-    p = createDict()        
     word = sys.argv[1]
-    print hyphenate(p,word)
-    
-
-        
+    print hyphenate(createDict(),word)
