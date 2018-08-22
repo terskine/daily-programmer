@@ -22,10 +22,8 @@ def createDict():
     numRegex = re.compile('[0-9]+')
     for x in patterns:
         a={}
-        c=0
-        for y in re.finditer(numRegex,x):
+        for c,y in enumerate(re.finditer(numRegex,x)):
             a[y.start()-c] = int(y.group(0))
-            c += 1
         yield (re.sub(numRegex,'',x), a)
 
 
