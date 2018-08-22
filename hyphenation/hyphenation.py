@@ -20,15 +20,14 @@ def hyphenate(p, word):
 def createDict():
     patterns = [re.sub('\\.$','$', y) for y in [re.sub('^\\.','^', x) for x in [line.strip('\n').replace('^.','^').replace('.$','$') for line in open('dict.txt')]]]
     numRegex = re.compile('[0-9]+')
-    p=[]
     for x in patterns:
         a={}
         c=0
         for y in re.finditer(numRegex,x):
             a[y.start()-c] = int(y.group(0))
             c += 1
-        p.append((re.sub(numRegex,'',x), a))
-    return p
+        yield (re.sub(numRegex,'',x), a)
+
 
 if __name__== "__main__":
         
